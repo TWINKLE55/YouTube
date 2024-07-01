@@ -21,7 +21,7 @@ const ButtonList = () => {
     "Christmas",
   ];
   return (
-    <div className="flex p-6 h-12  items-center m-4  overflow-x-scroll no-scrollbar">
+    <div className="flex p-6 h-12 w-[100%]  items-center m-4  overflow-x-scroll no-scrollbar">
       {buttonArr.map((button) => (
         <Button name={button} key={button} />
       ))}

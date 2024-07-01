@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/appSlice";
 import { useParams } from "react-router-dom";
 import LiveMessage from "./LiveMessage";
+import Video from "./Video";
 
 const WatchPage = () => {
   const params = useParams();
@@ -16,7 +17,44 @@ const WatchPage = () => {
     {
       name: "Twinkle",
       comment: "Lorem ipsum dolor sit amet consectetur.",
-      replies: [],
+      replies: [
+        {
+          name: "Twinkle",
+          comment: "Lorem ipsum dolor sit amet consectetur.",
+          replies: [
+            {
+              name: "Twinkle",
+              comment: "Lorem ipsum dolor sit amet consectetur.",
+              replies: [
+                {
+                  name: "Twinkle",
+                  comment: "Lorem ipsum dolor sit amet consectetur.",
+                  replies: [
+                    {
+                      name: "Twinkle",
+                      comment: "Lorem ipsum dolor sit amet consectetur.",
+                      replies: [
+                        {
+                          name: "Twinkle",
+                          comment: "Lorem ipsum dolor sit amet consectetur.",
+                          replies: [
+                            {
+                              name: "Twinkle",
+                              comment:
+                                "Lorem ipsum dolor sit amet consectetur.",
+                              replies: [],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
     },
     {
       name: "Twinkle",
@@ -109,25 +147,30 @@ const WatchPage = () => {
 
   return (
     <>
-      <div className="flex w-full">
-        <div className="flex flex-col">
-          <div className=" m-2 ">
+      <div className="flex w-[100%] ">
+        <div className="flex flex-col w-[70%] w">
+          <div className=" mt-24  ">
             <iframe
-              width="900"
-              height="400"
+              className="lg:w-[900px] lg:h-[700px] w-[470px] h-[300px] m-5 "
               src={"https://www.youtube.com/embed/" + params.id}
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             ></iframe>
           </div>
-          <div className="m-2 mt-4  ">
+          <div className="m-2 mt-4 ">
             <h1 className="text-2xl font-bold m-1">Comments</h1>
             <CommentList comments={commentData} />
           </div>
         </div>
-        <div className="m-2 h-[400px] rounded-sm border border-black w-full">
-          <LiveMessage />
+
+        <div className="flex flex-col w-[30%]  lg:visible invisible">
+          <div className="m-2 h-[400px]  rounded-sm border border-black w-full">
+            <LiveMessage />
+          </div>
+          <div className="mt-20  lg:visible invisible">
+            <Video />
+          </div>
         </div>
       </div>
     </>

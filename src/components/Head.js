@@ -36,7 +36,7 @@ const Head = () => {
     dispatch(toggleMenu());
   };
   return (
-    <div className="w-[100%] shadow-lg h-18  p-2 flex justify-between ">
+    <div className="w-[100%] shadow-lg h-18 bg-white  p-2 flex justify-between z-30 fixed">
       <div className="flex h-10 items-center w-[10%]">
         <img
           className="w-12 cursor-pointer "
@@ -44,7 +44,7 @@ const Head = () => {
           src="https://tse3.mm.bing.net/th?id=OIP.ovcJ2Zaf-EkM_Emrh76B6QHaHa&pid=Api&P=0&h=180"
         />
         <img
-          className="ml-3 h-8 w-22 "
+          className="ml-3 h-8 w-22 invisible lg:visible "
           src="https://tse4.mm.bing.net/th?id=OIP.xxNZm92rz6ZHHChoF2zZSAHaBp&pid=Api&P=0&h=180"
         />
       </div>

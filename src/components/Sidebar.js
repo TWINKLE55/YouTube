@@ -7,10 +7,10 @@ const Sidebar = () => {
   return (
     <>
       {menuToggle && (
-        <div className="w-[15%] bg-gray-200 ">
-          <div className="mt-2 border-b-4 my-3 p-7">
+        <div className="md:w-[15%] sm:w-[20%] bg-gray-200 absolute left-0 sm:pt- ">
+          <div className="mt-7 border-b-4 my-3 p-7">
             <ul className="text-xl mt-2">
-              <li>
+              <li className="">
                 <Link to={"/"}>Home</Link>
               </li>
               <li>Shorts</li>
