@@ -9,6 +9,7 @@ import { API_KEY } from "../utils/constants";
 const WatchPage = () => {
   const params = useParams();
   const [data, setData] = useState();
+  const [show, setShow] = useState(true);
   // console.log(params.id);
   const dispatch = useDispatch();
   const videoData = async () => {
@@ -16,8 +17,10 @@ const WatchPage = () => {
       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${params.id}&key=${API_KEY}`
     );
     const json = await data.json();
-    // console.log(json);
-    setData(json?.items[0]?.snippet.title);
+
+    {
+      json && setData(json?.items[0]?.snippet.title);
+    }
   };
   useEffect(() => {
     dispatch(closeMenu());
@@ -161,7 +164,7 @@ const WatchPage = () => {
                 "?rel=0&autoplay=1"
               }
               title="YouTube video player"
-              className="lg:w-[900px] lg:h-[400px] w-[120%] h-[70%]"
+              className="lg:w-[900px] lg:h-[400px] w-[95%] h-[70%]"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             ></iframe>
             <div>
@@ -177,9 +180,25 @@ const WatchPage = () => {
             </div>
           </div>
           <div className="m-2 lg:mt-4  mt-32">
-            <h1 className="text-2xl font-bold m-1">Comments</h1>
-            <CommentList comments={commentData} />
+            <div className="flex justify-between shadow-lg pb-3">
+              <h1 className="text-2xl font-bold m-1">Comments</h1>
+              <span
+                onClick={() => {
+                  setShow(!show);
+                }}
+                className="text-2xl font-bold mt-2 cursor-pointer pl-2"
+              >
+                ^
+              </span>
+            </div>
+
+            {show && (
+              <div>
+                <CommentList comments={commentData} />
+              </div>
+            )}
           </div>
+          <div></div>
         </div>
 
         <div className="flex flex-col w-[30%] ml-[15%]">

@@ -6,6 +6,7 @@ import { chacheResults } from "../utils/searchSlice";
 
 const Head = () => {
   const [searchText, setSearchText] = useState("");
+
   const [suggestionData, setSuggestionData] = useState([]);
   const [show, setShow] = useState(false);
   const searchChache = useSelector((store) => store.search);
@@ -24,6 +25,7 @@ const Head = () => {
 
   const search = () => {
     dispatch(addCategoryValue(searchText));
+
     // console.log("bdjehgufhu");
   };
   const getSuggestion = async () => {
@@ -79,6 +81,9 @@ const Head = () => {
                 {suggestionData.map((e) => {
                   return (
                     <li
+                      onClick={() => {
+                        search();
+                      }}
                       key={e}
                       className="m-2 px-2 shadow-sm border-gray-100 hover:bg-gray-100"
                     >
