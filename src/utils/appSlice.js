@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const appSlice = createSlice({
   name: "app",
   initialState: {
-    menuShowUp: true,
+    menuShowUp: false,
+    categoryValue: "All",
   },
   reducers: {
     toggleMenu: (state) => {
@@ -12,8 +13,11 @@ const appSlice = createSlice({
     closeMenu: (state) => {
       state.menuShowUp = false;
     },
+    addCategoryValue: (state, action) => {
+      state.categoryValue = action.payload;
+    },
   },
 });
 
 export default appSlice.reducer;
-export const { toggleMenu, closeMenu } = appSlice.actions;
+export const { toggleMenu, closeMenu, addCategoryValue } = appSlice.actions;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleMenu } from "../utils/appSlice";
+import { addCategoryValue, toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { chacheResults } from "../utils/searchSlice";
 
@@ -22,6 +22,10 @@ const Head = () => {
     };
   }, [searchText]);
 
+  const search = () => {
+    dispatch(addCategoryValue(searchText));
+    // console.log("bdjehgufhu");
+  };
   const getSuggestion = async () => {
     const data = await fetch(YOUTUBE_SEARCH_API + searchText);
     const json = await data.json();
@@ -36,7 +40,7 @@ const Head = () => {
     dispatch(toggleMenu());
   };
   return (
-    <div className="w-[100%] shadow-lg h-18 bg-white  p-2 flex justify-between z-30 fixed">
+    <div className="w-[100%] shadow-lg h-18 bg-white fixed  p-2 flex justify-between z-30 ">
       <div className="flex h-10 items-center w-[10%]">
         <img
           className="w-12 cursor-pointer "
@@ -61,6 +65,9 @@ const Head = () => {
           />
 
           <img
+            onClick={() => {
+              search();
+            }}
             className="rounded-r-full h-11 items-center ml-1 "
             src="https://tse3.mm.bing.net/th?id=OIP.s2fpUGqUzC_uxD_d_j-WlQHaGS&pid=Api&P=0&h=180"
           />

@@ -7,8 +7,8 @@ const searchSlice = createSlice({
     chacheResults: (state, action) => {
       // console.log(state);
       state = Object.assign(state, action.payload);
-      //   console.log(state);
-      //   console.log(action.payload);
+      // console.log(state);
+      // console.log(action.payload);
     },
   },
 });

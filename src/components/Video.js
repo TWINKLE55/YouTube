@@ -15,11 +15,15 @@ const Video = () => {
   });
   return (
     <div className="flex flex-wrap justify-center">
-      {video?.map((video) => (
-        <Link key={video.id} to={"/watch/" + video.id}>
-          <VideoCard info={video} />
-        </Link>
-      ))}
+      {video?.map((video) => {
+        return (
+          <div key={video.id}>
+            <Link to={"/watch/" + video.id}>
+              <VideoCard info={video} />
+            </Link>
+          </div>
+        );
+      })}
     </div>
   );
 };

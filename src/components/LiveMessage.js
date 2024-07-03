@@ -11,7 +11,7 @@ const LiveMessage = () => {
   useEffect(() => {
     const i = setInterval(() => {
       //   console.log("api polling");
-      dispatch(addChat({ name: generateRandomName(), msg: makeid(20) }));
+      dispatch(addChat({ name: generateRandomName(), msg: makeid(15) }));
     }, 2000);
     return () => {
       clearInterval(i);
@@ -20,7 +20,7 @@ const LiveMessage = () => {
 
   return (
     <>
-      <div className="flex flex-col-reverse  h-[400px] overflow-y-scroll  ">
+      <div className="flex flex-col-reverse  h-[400px] no-scrollbar overflow-y-scroll overflow-x-hidden ">
         {nameMsg.map((e, i) => {
           return <ChatMessage key={i} name={e.name} msg={e.msg} />;
         })}
