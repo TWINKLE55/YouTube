@@ -33,7 +33,7 @@ const VideoContainer = () => {
     setVideo(json?.items);
   };
   return (
-    <div className="flex w-[80%] lg:w-[100%] flex-wrap justify-center ml-4 lg:ml-0">
+    <div className="flex w-[80%] lg:w-[100%] flex-wrap justify-center ml-20 lg:ml-0">
       {video?.map((video) => (
         <Link
           key={typeof video.id == "object" ? video.id.videoId : video.id}

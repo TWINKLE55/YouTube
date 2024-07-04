@@ -11,7 +11,7 @@ const LiveMessage = () => {
   useEffect(() => {
     const i = setInterval(() => {
       //   console.log("api polling");
-      dispatch(addChat({ name: generateRandomName(), msg: makeid(15) }));
+      dispatch(addChat({ name: generateRandomName(), msg: makeid(10) }));
     }, 2000);
     return () => {
       clearInterval(i);

@@ -9,7 +9,7 @@ import { API_KEY } from "../utils/constants";
 const WatchPage = () => {
   const params = useParams();
   const [data, setData] = useState();
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   // console.log(params.id);
   const dispatch = useDispatch();
   const videoData = async () => {
@@ -18,9 +18,7 @@ const WatchPage = () => {
     );
     const json = await data.json();
 
-    {
-      json && setData(json?.items[0]?.snippet.title);
-    }
+    setData(json?.items[0]?.snippet.title);
   };
   useEffect(() => {
     dispatch(closeMenu());
@@ -154,9 +152,9 @@ const WatchPage = () => {
 
   return (
     <>
-      <div className="flex w-[85%] mt-20 justify-between">
-        <div className="flex flex-col lg:w-[65%] w-[100%]">
-          <div className=" m-2 w-[100%] ">
+      <div className=" w-[100%] mt-20 justify-between">
+        <div className="flex justify-between w-[100%]">
+          <div className=" lg:m-2 lg:w-[70%] aspect-video m-2 ml-20   w-[100%] shadow-lg">
             <iframe
               src={
                 "https://www.youtube.com/embed/" +
@@ -164,11 +162,11 @@ const WatchPage = () => {
                 "?rel=0&autoplay=1"
               }
               title="YouTube video player"
-              className="lg:w-[900px] lg:h-[400px] w-[95%] h-[70%]"
+              className=" w-[100%] h-[90%]"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             ></iframe>
             <div>
-              <h1 className="text-2xl mt-2 font-bold">{data}</h1>
+              {data && <h1 className="text-2xl mt-2 font-bold">{data}</h1>}
             </div>
             <div className="flex mt-4">
               <button className="bg-gray-200 lg:w-[20%] hover:opacity-90  px-4 py-2 h-10 w-[32%] ml-5 rounded-lg m-4">
@@ -179,15 +177,23 @@ const WatchPage = () => {
               </button>
             </div>
           </div>
-          <div className="m-2 lg:mt-4  mt-32">
-            <div className="flex justify-between shadow-lg pb-3">
+          <div className=" w-[25%] m-2">
+            <div className=" h-[400px] w-[100%]  rounded-sm border border-black hidden lg:block ">
+              <LiveMessage />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col justify-center">
+          <div className="m-2 mt-6 lg:mt-10 w-[70%] flex-col flex ">
+            <div
+              onClick={() => {
+                setShow(!show);
+              }}
+              className="flex justify-between shadow-lg pb-3 mt-5 "
+            >
               <h1 className="text-2xl font-bold m-1">Comments</h1>
-              <span
-                onClick={() => {
-                  setShow(!show);
-                }}
-                className="text-2xl font-bold mt-2 cursor-pointer pl-2"
-              >
+              <span className="text-2xl font-bold mt-2 cursor-pointer pl-2">
                 ^
               </span>
             </div>
@@ -198,14 +204,7 @@ const WatchPage = () => {
               </div>
             )}
           </div>
-          <div></div>
-        </div>
-
-        <div className="flex flex-col w-[30%] ml-[15%]">
-          <div className="m-2 h-[400px]  rounded-sm border border-black hidden lg:block ">
-            <LiveMessage />
-          </div>
-          <div className="mt-20 hidden lg:block">
+          <div className="mt-20  flex flex-wrap">
             <Video />
           </div>
         </div>
