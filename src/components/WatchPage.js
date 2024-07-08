@@ -10,19 +10,19 @@ const WatchPage = () => {
   const params = useParams();
   const [data, setData] = useState();
   const [show, setShow] = useState(false);
-  // console.log(params.id);
+  console.log(params.id);
   const dispatch = useDispatch();
   const videoData = async () => {
     const data = await fetch(
       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${params.id}&key=${API_KEY}`
     );
     const json = await data.json();
-
-    setData(json?.items[0]?.snippet.title);
+    console.log(json);
+    // setData(json?.items[0]?.snippet.title);
   };
   useEffect(() => {
     dispatch(closeMenu());
-    videoData();
+    // videoData();
   }, []);
 
   const commentData = [
